@@ -10,6 +10,20 @@ import UIKit
 
 struct ProfileView: View {
   @StateObject var viewModel = UserViewModel()
+  @State private var changeData: Bool = false
+  @State private var updatedName: String = ""
+  @State private var updatedEmail: String = ""
+  @State private var updatedCurrency: String = "USD"
+  @State private var updatedLimit = 1000
+  @State private var showFaceId = true
+  @State private var isSecured: Bool = true
+  @State private var showPinPool: Bool = false
+  @State private var updatedPin: String = ""
+  @State private var showNotifications = true
+  @State private var showAlert: Bool = false
+  
+  var valutes = ["USD", "EUR", "GBR", "GRN"]
+  var moneyLimit = [1000, 2000, 3000, 4000]
   
   var body: some View {
     ZStack {
@@ -17,39 +31,142 @@ struct ProfileView: View {
         .ignoresSafeArea()
       ScrollView {
         VStack {
-            VStack {
-              ForEach(viewModel.savedEntities) { entity in
-                Image("userImage")
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: 120, height: 115)
-                  .clipShape(Circle())
-                Text(entity.name ?? "")
-                  .font(.system(size: 20, weight: .bold))
-              }
+          VStack {
+            ForEach(viewModel.savedEntities) { entity in
+              Image("userImage")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 120, height: 115)
+                .clipShape(Circle())
+              Text(entity.name ?? "")
+                .font(.system(size: 20, weight: .bold))
             }
-            VStack(spacing: 0) {
-              ForEach(viewModel.savedEntities) { entity in
-                NameCell(name: entity.name ?? "")
-                EmailCell(email: entity.email ?? "")
-                CurrencyCell(currency: entity.currency ?? "")
-                DailyLimitCell(dailyLimit: entity.limit)
-                FaceIdCell()
-                PinCodeCell(pin: entity.pincode ?? "")
-                NotificationCell()
-                NavigationLink(destination: AddMemberView()) {
-                  AddMemberCell()
+          }
+          VStack(spacing: 0) {
+            ForEach(viewModel.savedEntities) { entity in
+              Cell(title: "Name:") {
+                if changeData {
+                  TextField("\(entity.name ?? "")", text: $updatedName)
+                    .modifier(UserProfileNameModifier())
+                } else {
+                  Text("\(entity.name ?? "")")
+                    .modifier(UserProfileNameModifier())
                 }
               }
+              Cell(title: "Email:") {
+                if changeData {
+                  TextField("\(entity.email ?? "")", text: $updatedEmail)
+                    .modifier(UserProfileNameModifier())
+                } else {
+                  Text("\(entity.email ?? "")")
+                    .modifier(UserProfileNameModifier())
+                }
+              }
+              Cell(title: "Currency:") {
+                if changeData {
+                  Picker("", selection: $updatedCurrency) {
+                    ForEach(valutes, id: \.self) {
+                      Text($0)
+                    }
+                  }
+                  .modifier(UserProfilePickerModifier())
+                } else {
+                  Text("\(entity.currency ?? "")")
+                    .modifier(UserProfileNameModifier())
+                }
+              }
+              Cell(title: "Limit:") {
+                if changeData {
+                  Picker("", selection: $updatedLimit) {
+                    ForEach(moneyLimit, id: \.self) {
+                      Text("\($0)")
+                    }
+                  }
+                  .modifier(UserProfilePickerModifier())
+                } else {
+                  Text("\(entity.limit)")
+                    .modifier(UserProfileNameModifier())
+                }
+              }
+              Cell(title: "Use FaceID") {
+                Toggle("", isOn: $showFaceId)
+                  .padding(.trailing, 15)
+              }
+              Cell(title: "Your pin") {
+                if changeData {
+                  TextField("\(entity.pincode ?? "")", text: $updatedPin)
+                    .modifier(UserProfileNameModifier())
+                } else {
+                  HStack {
+                    Spacer()
+                    Text(isSecured ? "****" : entity.pincode ?? "")
+                      .font(.system(size: 15, weight: .medium))
+                      .foregroundColor(Colors.grayText)
+                      .onTapGesture {
+                      }
+                      .multilineTextAlignment(TextAlignment.trailing)
+                      .padding(.vertical, 20)
+                    Button(action: {isSecured.toggle()}) {
+                      Image(systemName: self.isSecured ? "eye.slash" : "eye")
+                        .padding(.trailing, 15)
+                        .foregroundColor(.black)
+                    }
+                  }
+                }
+              }
+              .onTapGesture {
+                if changeData {
+                  showPinPool.toggle()
+                  if showPinPool {
+                    updatedPin = ""
+                  }
+                }
+              }
+              Cell(title: "Use FaceID") {
+                Toggle("", isOn: $showNotifications)
+                  .padding(.trailing, 15)
+              }
+              NavigationLink(destination: AddMemberView()) {
+                AddMemberCell()
+              }
             }
-            .background(.white)
-            .frame(width: UIScreen.main.bounds.width - 40)
-            .cornerRadius(15)
-          Spacer()
-          Spacer()
-          Button(action: {viewModel.deleteUser()}) {
-            Text("Change user data")
           }
+          .background(.white)
+          .frame(width: UIScreen.main.bounds.width - 40)
+          .cornerRadius(15)
+          Spacer()
+          Spacer()
+          
+          Button(action: {checkForUpdateUser() ; viewModel.updateUser(updatedName: updatedName, updatedEmail: updatedEmail, updatedCurrency: updatedCurrency, updatedLimit: Int16(updatedLimit), updatedPincode: updatedPin); changeData = false }) {
+            Text("Update")
+              .font(.system(size: 15, weight: .bold))
+              .foregroundColor(.white)
+              .frame(height: 60)
+              .frame(maxWidth: .infinity)
+              .background(Colors.purpleButton)
+              .cornerRadius(30)
+              .padding(.horizontal, 20)
+              .opacity(changeData ? 1 : 0)
+          }
+        }
+      }
+    }
+    .fullScreenCover(isPresented: $showPinPool) {
+        PinCodeButtonsGrid(pin: $updatedPin)
+    }
+    .toolbar {
+      HStack{
+      Button(action: { changeData.toggle()
+      }) {
+        Image(systemName: "slider.horizontal.3")
+      }
+        Button(action: { showAlert = true
+        }) {
+          Image(systemName: "trash.circle")
+        }
+        .alert("You wanna delete all user data ?", isPresented: $showAlert) {
+          Button("OK", role: .cancel) { viewModel.deleteUser()}
+          Button("NO", role: .destructive) {}
         }
       }
     }
@@ -57,200 +174,40 @@ struct ProfileView: View {
   }
 }
 
-struct NameCell: View {
-  var name: String
-  init(name: String) {
-    self.name = name
-  }
-  var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("Name:")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        Text(name)
-          .font(.system(size: 15, weight: .medium))
-          .padding(.trailing, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(Colors.grayText)
+extension ProfileView {
+  func checkForUpdateUser() {
+    for user in viewModel.savedEntities {
+      if updatedName.isEmpty {
+        updatedName = user.name ?? ""
       }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
+      if updatedEmail.isEmpty {
+        updatedEmail = user.email ?? ""
+      }
     }
   }
 }
 
-struct EmailCell: View {
-  var email: String
-  init(email: String) {
-    self.email = email
+struct Cell<Content> : View where Content : View {
+  let title: String
+  let content: () -> Content
+  var cellHorizontalPadding: CGFloat = UIScreen.main.bounds.width - 70
+  var cellHeight: CGFloat = 60
+  
+  init(title: String, @ViewBuilder content: @escaping () -> Content) {
+    self.title = title
+    self.content = content
   }
   var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("Email:")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        Text(email)
-          .font(.system(size: 15, weight: .medium))
-          .padding(.trailing, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(Colors.grayText)
-      }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
+    HStack {
+      Text(title)
+        .modifier(UserProfileTitleModifier())
+      Spacer()
+      content()
     }
-  }
-}
-
-struct CurrencyCell: View {
-  var currency: String
-  init(currency: String) {
-    self.currency = currency
-  }
-  var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("Currency:")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        Text(currency)
-          .font(.system(size: 15, weight: .medium))
-          .padding(.trailing, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(Colors.grayText)
-      }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
-    }
-  }
-}
-
-struct DailyLimitCell: View {
-  var dailyLimit: Int16
-  init(dailyLimit: Int16) {
-    self.dailyLimit = dailyLimit
-  }
-  var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("DailyLimit:")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        Text("\(dailyLimit)")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.trailing, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(Colors.grayText)
-      }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
-    }
-  }
-}
-
-struct FaceIdCell: View {
-  @State private var showFaceId = true
-  var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("Use FaceID")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        Toggle("", isOn: $showFaceId)
-          .padding(.trailing, 15)
-      }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
-    }
-  }
-}
-
-struct PinCodeCell: View {
-  @State private var isSecured: Bool = true
-  @State var showPinPool: Bool = false
-  var pin: String
-  init(pin: String) {
-    self.pin = pin
-  }
-  var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("Your pin")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        HStack {
-          Spacer()
-          Text(isSecured ? "****" : pin)
-            .font(.system(size: 15, weight: .medium))
-            .foregroundColor(Colors.grayText)
-            .onTapGesture {
-              showPinPool.toggle()
-            }
-            .multilineTextAlignment(TextAlignment.trailing)
-            .padding(.vertical, 20)
-          Button(action: {isSecured.toggle()}) {
-            Image(systemName: self.isSecured ? "eye.slash" : "eye")
-              .padding(.trailing, 15)
-              .foregroundColor(.black)
-          }
-        }
-      }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
-    }
-  }
-}
-
-struct NotificationCell: View {
-  @State private var showNotifications = true
-  var body: some View {
-    VStack(spacing: 0) {
-      HStack {
-        Text("Use FaceID")
-          .font(.system(size: 15, weight: .medium))
-          .padding(.leading, 15)
-          .padding(.vertical, 20)
-          .foregroundColor(.black)
-        Spacer()
-        Toggle("", isOn: $showNotifications)
-          .padding(.trailing, 15)
-      }
-      .frame(height: 60)
-      .foregroundColor(.white)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
-    }
+    .frame(height: cellHeight)
+    .foregroundColor(.white)
+    Divider()
+      .frame(width: cellHorizontalPadding)
   }
 }
 

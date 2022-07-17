@@ -31,13 +31,7 @@ struct AccountView: View {
             logoWithText
             VStack(spacing: 1) {
               accountCell
-                .onChange(of: name) { newValue in
-                  checkAccountInputs()
-                }
               mailCell
-                .onChange(of: email) { newValue in
-                  checkAccountInputs()
-                }
               currencyCell
               dailyLimitCell
               faceIdCell
@@ -50,16 +44,8 @@ struct AccountView: View {
             .background(.white)
             .cornerRadius(25)
             .padding()
-            VStack {
-              createAccountButton
-              HStack(spacing: 30) {
-                Button(action: { viewModel.deleteUser()}) {
-                  Text("Delete")
-                }
-                .padding(.top, 30)
-              }
-            }
-            .padding(.top, 70)
+            createAccountButton
+              .padding(.top, 70)
           }
       }
       .fullScreenCover(isPresented: $showPinPool) {
@@ -96,6 +82,9 @@ extension AccountView {
         TextField("None", text: $name)
           .multilineTextAlignment(TextAlignment.trailing)
           .padding(.trailing, 15)
+          .onChange(of: name) { newValue in
+            checkAccountInputs()
+          }
       }
       .frame(height: cellHeight)
       Divider()
@@ -113,6 +102,9 @@ extension AccountView {
         TextField("None", text: $email)
           .multilineTextAlignment(TextAlignment.trailing)
           .padding(.trailing, 15)
+          .onChange(of: email) { newValue in
+            checkAccountInputs()
+          }
       }
       .frame(height: cellHeight)
       Divider()
@@ -196,6 +188,9 @@ extension AccountView {
         Group {
           if isSecured {
             SecureField("", text: $pin)
+              .onChange(of: pin) { newValue in
+                checkAccountInputs()
+              }
           } else {
             TextField("", text: $pin)
           }

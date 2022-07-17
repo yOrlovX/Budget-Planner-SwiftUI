@@ -45,6 +45,18 @@ class UserViewModel : ObservableObject {
     newUser.currency = currency
     saveData()
   }
+  
+  func updateUser(updatedName: String, updatedEmail: String, updatedCurrency: String, updatedLimit: Int16, updatedPincode: String) {
+    for user in savedEntities {
+      manager.container.viewContext.refresh(user, mergeChanges: true)
+      user.name = updatedName
+      user.email = updatedEmail
+      user.currency = updatedCurrency
+      user.limit = updatedLimit
+      user.pincode = updatedPincode
+    }
+    saveData()
+  }
 
   func saveData() {
     do {

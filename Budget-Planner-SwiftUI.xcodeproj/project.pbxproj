@@ -24,6 +24,7 @@
 		92A58687285BA6BD00865B8B /* OperationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A58686285BA6BC00865B8B /* OperationViewModel.swift */; };
 		92A5868E285FCABF00865B8B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5868D285FCABF00865B8B /* CoreDataManager.swift */; };
 		92A58691285FCC3400865B8B /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92A5868F285FCC3400865B8B /* CoreDataContainer.xcdatamodeld */; };
+		92C2C129287F17F600450B02 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C2C128287F17F600450B02 /* ViewModifiers.swift */; };
 		92CD963A283E5EC300883D1A /* PinCodeButtonsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD9639283E5EC300883D1A /* PinCodeButtonsGrid.swift */; };
 		92CD963C283E82C100883D1A /* RegistrationDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD963B283E82C100883D1A /* RegistrationDoneView.swift */; };
 		92CD9640283F661900883D1A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CD963F283F661900883D1A /* ProfileView.swift */; };
@@ -67,6 +68,7 @@
 		92A58690285FCC3400865B8B /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
 		92A586932860A2F800865B8B /* CoreDataContainer 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataContainer 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		92A586942860E8EF00865B8B /* CoreDataContainer 1. 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataContainer 1. 2.xcdatamodel"; sourceTree = "<group>"; };
+		92C2C128287F17F600450B02 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		92CD9639283E5EC300883D1A /* PinCodeButtonsGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinCodeButtonsGrid.swift; sourceTree = "<group>"; };
 		92CD963B283E82C100883D1A /* RegistrationDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDoneView.swift; sourceTree = "<group>"; };
 		92CD963D283E8D6F00883D1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				92CD96452840023300883D1A /* CornerRadiusStyle.swift */,
 				92CD964C28425BE400883D1A /* GaugeProgressStyle.swift */,
 				92000415284F528A00A7D03C /* SemiCircleProgressViewStyle.swift */,
+				92C2C128287F17F600450B02 /* ViewModifiers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				92000410284A4B7F00A7D03C /* BaseView.swift in Sources */,
 				92CD96692847DB4F00883D1A /* ConnectionView.swift in Sources */,
 				92CD965F2845132F00883D1A /* AddCardView.swift in Sources */,
+				92C2C129287F17F600450B02 /* ViewModifiers.swift in Sources */,
 				92596A73283CD64A009C2D5E /* Colors.swift in Sources */,
 				927BE9D728367B6C00E2360A /* Budget_Planner_SwiftUIApp.swift in Sources */,
 				92CD96492840077F00883D1A /* HomeView.swift in Sources */,
