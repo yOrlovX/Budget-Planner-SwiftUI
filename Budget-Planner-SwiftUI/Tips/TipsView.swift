@@ -35,6 +35,7 @@ struct TipsView: View {
             }
             .padding(.top, 27)
             .padding(.horizontal, 20)
+            .padding(.bottom, 100)
           }
         }
       }

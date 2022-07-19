@@ -25,11 +25,9 @@ struct SpendingBreakdownCell: View {
           ZStack {
             ProgressView(value: operationProgress, total: 1)
               .progressViewStyle(SemiCircleProgressViewStyle())
-              .frame(width: 77, height: 67)
             Image(operationImage)
               .resizable()
               .scaledToFit()
-              .frame(width: 24, height: 24)
               .padding()
           }
           .padding(.horizontal, 20)

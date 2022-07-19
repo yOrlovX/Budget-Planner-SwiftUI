@@ -151,20 +151,19 @@ extension HomeView {
                   }
                 VStack {
                     Text("\(operationViewModel.totalSumOfOperations())")
-                      .font(.system(size: 40, weight: .semibold))
+                    .font(.system(size: AdaptiveFonts.totalSumFont, weight: .semibold))
                       .minimumScaleFactor(0.7)
-
                   Text("spent today")
-                    .font(.system(size: 16.5, weight: .regular))
+                    .font(.system(size: AdaptiveFonts.spentTodayFont, weight: .regular))
                     .foregroundColor(Colors.grayText)
                   Divider()
                     .frame(width: mainCircleWidth - 125)
                   Text("balance for today")
-                    .font(.system(size: 16.5, weight: .regular))
+                    .font(.system(size: AdaptiveFonts.balanceTodayFont, weight: .regular))
                     .foregroundColor(Colors.grayText)
                   ForEach(userViewModel.savedEntities, id: \.self) { user in
                     Text("\(user.limit)")
-                      .font(.system(size: 23, weight: .semibold))
+                      .font(.system(size: AdaptiveFonts.userLimitFont, weight: .semibold))
                       .foregroundColor(Colors.lightGreen)
                   }
                 }
@@ -178,7 +177,6 @@ extension HomeView {
   func getProgressAmount () -> Double {
     Double(operationViewModel.totalSumOfOperations()) / 1000
   }
-  
 }
 
 struct HomeView_Previews: PreviewProvider {
