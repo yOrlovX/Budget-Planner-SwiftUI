@@ -55,6 +55,7 @@ struct HomeView: View {
             }
             .listStyle(.insetGrouped)
             .padding(.top, -30)
+            .padding(.bottom, 50)
             .cornerRadius(30)
         }
     }

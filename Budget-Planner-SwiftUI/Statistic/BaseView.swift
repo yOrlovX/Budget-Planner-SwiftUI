@@ -33,6 +33,7 @@ struct BaseView: View {
               .padding(.top, 20)
             VStack {
               Text("\(currentDateText.formatted(date: .abbreviated, time: .omitted) + " - " + futureDateText.formatted(date: .abbreviated, time: .omitted))")
+                .font(.system(size: 13, weight: .regular))
             }
             .padding(.leading, 18)
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -12,11 +12,10 @@ struct AddCardView: View {
         ZStack {
           Colors.background
             .ignoresSafeArea()
-          VStack {
+          VStack(spacing: 11) {
             Text("Cards")
               .font(.system(size: 34, weight: .bold))
               .frame(maxWidth: .infinity, alignment: .leading)
-              .padding(.leading, 20)
             Text("Add your cards to see expenses and income on them")
               .font(.system(size: 23, weight: .regular))
               .multilineTextAlignment(.leading)
@@ -26,11 +25,11 @@ struct AddCardView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
-                .padding(.horizontal, 20)
             }
             Spacer()
           }
           .padding(.top, 80)
+          .padding(.horizontal, 20)
         }
         .navigationTitle("")
     }

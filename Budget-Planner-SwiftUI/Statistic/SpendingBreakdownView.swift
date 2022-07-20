@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SpendingBreakdownView: View {
-  let columns = Array(repeating: GridItem(.adaptive(minimum: .infinity), spacing: 10), count: 3)
+  let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
   
     var body: some View {
       VStack {

@@ -28,10 +28,8 @@ struct SpendingBreakdownCell: View {
             Image(operationImage)
               .resizable()
               .scaledToFit()
-              .padding()
+              .frame(width: 24, height: 24)
           }
-          .padding(.horizontal, 20)
-          .padding(.top, 19)
           VStack(spacing: 5) {
             Text(operationName)
               .font(.system(size: 12, weight: .semibold))
@@ -43,6 +41,7 @@ struct SpendingBreakdownCell: View {
           .padding(.top, -10)
           .padding(.bottom, 15)
         }
+        .frame(height: 145)
         .background(.white)
         .cornerRadius(20)
     }

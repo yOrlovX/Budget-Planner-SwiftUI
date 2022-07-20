@@ -2,7 +2,7 @@
 //  Budget_Planner_SwiftUIApp.swift
 //  Budget-Planner-SwiftUI
 //
-//  Created by Optimus Prime on 19.05.2022.
+//  Created by Yaroslav Orlov on 19.05.2022.
 //
 
 import SwiftUI
@@ -14,6 +14,7 @@ struct Budget_Planner_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
           IntroView()
+//            .preferredColorScheme(.dark)
         }
     }
 }

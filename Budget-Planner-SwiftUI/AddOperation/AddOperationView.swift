@@ -108,7 +108,7 @@ struct AddOperationView: View {
             .padding(.top, 30)
           }
           .disabled(isValidate == false)
-          .padding(.bottom, 50)
+          .padding(.bottom, 100)
         }
       }
     }

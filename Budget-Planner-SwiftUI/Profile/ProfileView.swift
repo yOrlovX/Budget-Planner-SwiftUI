@@ -148,6 +148,7 @@ struct ProfileView: View {
               .padding(.horizontal, 20)
               .opacity(changeData ? 1 : 0)
           }
+          .padding(.bottom, 50)
         }
       }
     }
