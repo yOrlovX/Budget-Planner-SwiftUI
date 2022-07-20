@@ -36,7 +36,7 @@ extension ConnectionView {
       VStack(spacing: 8) {
         Circle()
           .frame(width: 29, height: 29)
-          .foregroundColor(Colors.greenCircle)
+          .foregroundColor(Colors.cardProgress)
           .overlay {
             Image(systemName: "checkmark")
               .font(.system(size: 15, weight: .semibold))
@@ -49,7 +49,7 @@ extension ConnectionView {
       VStack(spacing: 8) {
         Circle()
           .frame(width: 29, height: 29)
-          .foregroundColor(Colors.greenCircle)
+          .foregroundColor(Colors.cardProgress)
           .overlay {
             Image(systemName: "checkmark")
               .font(.system(size: 15, weight: .semibold))
@@ -92,14 +92,14 @@ extension ConnectionView {
         .padding(.leading, 16)
         .frame(height: 70)
         .frame(maxWidth: .infinity)
-        .background(.white)
+        .background(Colors.listBackground)
         .cornerRadius(20)
         .padding(.horizontal, 20)
       TextField("Password", text: $passwordText)
         .padding(.leading, 16)
         .frame(height: 70)
         .frame(maxWidth: .infinity)
-        .background(.white)
+        .background(Colors.listBackground)
         .cornerRadius(20)
         .padding(.horizontal, 20)
     }

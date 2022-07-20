@@ -25,6 +25,7 @@ struct ChooseCountryView: View {
           .frame(maxWidth: .infinity, alignment: .leading)
           .padding(.leading, 20)
           .padding(.top, 20)
+          .foregroundColor(Colors.basicText)
           .font(.system(size: 20, weight: .bold))
         SearchBar(searchText: $searchText, searching: $searching)
         List {
@@ -68,11 +69,11 @@ private var registrationProgress: some View {
     VStack(spacing: 8) {
       Circle()
         .frame(width: 29, height: 29)
-        .foregroundColor(.white)
+        .foregroundColor(Colors.cardProgressCirle)
         .overlay {
           Text("2")
             .font(.system(size: 15, weight: .semibold))
-            .foregroundColor(Colors.purpleButton)
+            .foregroundColor(Colors.cardCircleText)
         }
       Text("Bank")
         .font(.system(size: 12, weight: .semibold))
@@ -81,11 +82,11 @@ private var registrationProgress: some View {
     VStack(spacing: 8) {
       Circle()
         .frame(width: 29, height: 29)
-        .foregroundColor(.white)
+        .foregroundColor(Colors.cardProgressCirle)
         .overlay {
           Text("3")
             .font(.system(size: 15, weight: .semibold))
-            .foregroundColor(Colors.purpleButton)
+            .foregroundColor(Colors.cardCircleText)
         }
       Text("Country")
         .font(.system(size: 12, weight: .semibold))
@@ -105,14 +106,15 @@ struct CountryRow: View {
       Text(rowData.name)
         .padding(.vertical, 22)
         .font(.system(size: 15, weight: .medium))
+        .foregroundColor(Colors.basicText)
       Spacer()
       if rowData == selectedRow {
         Image(systemName: "checkmark")
-          .foregroundColor(Colors.purpleButton)
+          .foregroundColor(Colors.listSelectedItem)
           .padding(.trailing, 15)
       }
     }
-    .background(.white)
+    .listRowBackground(Colors.listBackground)
     .onTapGesture {
       self.selectedRow = rowData
     }
@@ -123,6 +125,8 @@ extension ChooseCountryView {
   private var searchBar: some View {
     HStack {
       Image(systemName: "magnifyingglass")
+        .renderingMode(.template)
+        .foregroundColor(Colors.basicText)
         .padding(.leading, 14)
       TextField("Search", text: $searchText)
         .foregroundColor(Colors.grayText)
@@ -159,7 +163,7 @@ struct SearchBar : View {
     }
     .frame(height: 44)
     .frame(maxWidth: .infinity)
-    .background(.white)
+    .background(Colors.searchBarColor)
     .cornerRadius(20)
     .padding(.horizontal, 20)
   }

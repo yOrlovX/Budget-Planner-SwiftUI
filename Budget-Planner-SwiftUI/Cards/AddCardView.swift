@@ -21,10 +21,17 @@ struct AddCardView: View {
               .multilineTextAlignment(.leading)
               .foregroundColor(Colors.grayText)
             NavigationLink(destination: ChooseCountryView()) {
-              Image("addCard")
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
+              VStack {
+                Image("addCard")
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 70, height: 76)
+                Text("Add your first card")
+              }
+              .frame(maxWidth: .infinity)
+              .padding(.vertical, 40)
+              .background(Colors.listBackground)
+              .cornerRadius(10)
             }
             Spacer()
           }

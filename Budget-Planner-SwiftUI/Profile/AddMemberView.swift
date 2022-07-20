@@ -21,6 +21,7 @@ struct AddMemberView: View {
             .frame(width: 120, height: 115)
           Text("Add a family member")
             .font(.system(size: 20, weight: .bold))
+            .foregroundColor(Colors.basicText)
             .padding(.bottom)
           Text("Add your family members and control your \nbudget together")
             .font(.system(size: 15, weight: .regular))
@@ -34,7 +35,7 @@ struct AddMemberView: View {
             viberCell
           }
           .frame(width: UIScreen.main.bounds.width - 40)
-          .background(.white)
+          .background(Colors.listBackground)
           .cornerRadius(10)
           Spacer()
         }
@@ -82,6 +83,7 @@ extension AddMemberView {
         
         Text("Telegram")
           .font(.system(size: 15, weight: .medium))
+          .foregroundColor(Colors.basicText)
         Spacer()
       }
       .frame(height: cellHeight)
@@ -101,6 +103,7 @@ extension AddMemberView {
         
         Text("Facebook")
           .font(.system(size: 15, weight: .medium))
+          .foregroundColor(Colors.basicText)
         Spacer()
       }
       .frame(height: cellHeight)
@@ -120,6 +123,7 @@ extension AddMemberView {
         
         Text("Viber")
           .font(.system(size: 15, weight: .medium))
+          .foregroundColor(Colors.basicText)
         Spacer()
       }
       .frame(height: cellHeight)

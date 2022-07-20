@@ -22,6 +22,7 @@ struct ChooseBankView: View {
               BankRow(rowData: bank, selectedRow: self.$selectedRow)
             }
           }
+          .listStyle(.insetGrouped)
           NavigationLink(destination: ConnectionView()) {
             Text("Next")
               .frame(maxWidth: .infinity)
@@ -45,7 +46,7 @@ extension ChooseBankView {
       VStack(spacing: 8) {
         Circle()
           .frame(width: 29, height: 29)
-          .foregroundColor(Colors.greenCircle)
+          .foregroundColor(Colors.cardProgress)
           .overlay {
             Image(systemName: "checkmark")
               .font(.system(size: 15, weight: .semibold))
@@ -71,11 +72,11 @@ extension ChooseBankView {
       VStack(spacing: 8) {
         Circle()
           .frame(width: 29, height: 29)
-          .foregroundColor(.white)
+          .foregroundColor(Colors.cardProgressCirle)
           .overlay {
             Text("3")
               .font(.system(size: 15, weight: .semibold))
-              .foregroundColor(Colors.purpleButton)
+              .foregroundColor(Colors.cardCircleText)
           }
         Text("Country")
           .font(.system(size: 12, weight: .semibold))
@@ -101,16 +102,17 @@ struct BankRow: View {
     HStack {
       Text(rowData.name)
         .font(.system(size: 15, weight: .medium))
+        .foregroundColor(Colors.basicText)
         .padding(.vertical, 22)
         .padding(.leading, 15)
       Spacer()
       if rowData == selectedRow {
         Image(systemName: "checkmark")
-          .foregroundColor(Colors.purpleButton)
+          .foregroundColor(Colors.listSelectedItem)
           .padding(.trailing, 15)
       }
     }
-    .background(.white)
+    .listRowBackground(Colors.listBackground)
     .onTapGesture {
       self.selectedRow = rowData
     }

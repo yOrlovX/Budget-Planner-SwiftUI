@@ -25,4 +25,9 @@ struct Colors {
   static var circleText = Color("circleText")
   static var toggleColor = Color("toggleColor")
   static var addMember = Color("addMember")
+  static var searchBarColor = Color("searchBarColor")
+  static var listSelectedItem = Color("listSelectedItem")
+  static var cardProgress = Color("cardProgress")
+  static var cardProgressCirle = Color("cardProgressCirle")
+  static var cardCircleText = Color("cardCircleText")
 }
