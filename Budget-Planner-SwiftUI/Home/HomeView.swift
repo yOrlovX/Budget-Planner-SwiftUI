@@ -28,6 +28,7 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
             .font(.system(size: 20, weight: .bold))
+            .foregroundColor(Colors.basicText)
           Spacer()
             List {
               ForEach(operationViewModel.savedOperations.prefix(3), id: \.self) { operation in
@@ -90,16 +91,17 @@ struct ActionsRow: View {
   
   var body: some View {
     HStack{
-      Image(image)
-        .resizable()
-        .scaledToFit()
-        .frame(width: 30, height: 30)
-        .padding(.horizontal, 12)
+      RoundedRectangle(cornerRadius: 10)
+        .frame(width: 54, height: 54)
         .padding(.vertical, 12)
-        .background(Colors.imageBackground, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .padding(.vertical, 12)
-      
-      VStack(alignment: .leading, spacing: 5) {
+        .foregroundColor(Colors.imageBackground)
+        .overlay(Image(image)
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 24, height: 24)
+                  .padding(.horizontal, 12)
+                  .padding(.vertical, 12))
+      VStack(alignment: .leading, spacing: 3) {
         Text(name)
           .font(.system(size: 15, weight: .semibold))
         Text(description)
@@ -112,8 +114,9 @@ struct ActionsRow: View {
       Spacer()
       Text("\(currency.first?.description ?? "") \(price)")
         .font(.system(size: 15, weight: .semibold))
-        .foregroundColor(.green)
+        .foregroundColor(Colors.circleText)
     }
+    .listRowBackground(Colors.listBackground)
   }
   
   var dateFormatter: DateFormatter {
@@ -128,11 +131,11 @@ extension HomeView {
     ZStack {
       Circle()
         .frame(width: mainCircleWidth)
-        .foregroundColor(.white)
+        .foregroundColor(Colors.mailCircleBackground)
         .overlay {
           Circle()
             .frame(width: mainCircleWidth - 80)
-            .foregroundColor(.white)
+            .foregroundColor(Colors.middleCircleBackground)
             .shadow(color: Colors.purpleButton, radius: 10, x: 0, y: 0)
             .overlay {
               ZStack {
@@ -154,6 +157,7 @@ extension HomeView {
                     Text("\(operationViewModel.totalSumOfOperations())")
                     .font(.system(size: AdaptiveFonts.totalSumFont, weight: .semibold))
                       .minimumScaleFactor(0.7)
+                      .foregroundColor(Colors.basicText)
                   Text("spent today")
                     .font(.system(size: AdaptiveFonts.spentTodayFont, weight: .regular))
                     .foregroundColor(Colors.grayText)
@@ -165,7 +169,7 @@ extension HomeView {
                   ForEach(userViewModel.savedEntities, id: \.self) { user in
                     Text("\(user.limit)")
                       .font(.system(size: AdaptiveFonts.userLimitFont, weight: .semibold))
-                      .foregroundColor(Colors.lightGreen)
+                      .foregroundColor(Colors.circleText)
                   }
                 }
               }

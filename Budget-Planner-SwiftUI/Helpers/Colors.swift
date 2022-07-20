@@ -20,4 +20,7 @@ struct Colors {
   static var basicText = Color("basicText")
   static var skipButton = Color("skipButton")
   static var listBackground = Color("listBackground")
+  static var mailCircleBackground = Color("mailCircleBackground")
+  static var middleCircleBackground = Color("middleCircleBackground")
+  static var circleText = Color("circleText")
 }
