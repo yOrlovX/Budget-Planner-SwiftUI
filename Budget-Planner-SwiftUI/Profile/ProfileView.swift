@@ -40,6 +40,7 @@ struct ProfileView: View {
                 .clipShape(Circle())
               Text(entity.name ?? "")
                 .font(.system(size: 20, weight: .bold))
+                .foregroundColor(Colors.basicText)
             }
           }
           VStack(spacing: 0) {
@@ -91,6 +92,7 @@ struct ProfileView: View {
               Cell(title: "Use FaceID") {
                 Toggle("", isOn: $showFaceId)
                   .padding(.trailing, 15)
+                  .tint(Colors.toggleColor)
               }
               Cell(title: "Your pin") {
                 if changeData {
@@ -109,7 +111,7 @@ struct ProfileView: View {
                     Button(action: {isSecured.toggle()}) {
                       Image(systemName: self.isSecured ? "eye.slash" : "eye")
                         .padding(.trailing, 15)
-                        .foregroundColor(.black)
+                        .foregroundColor(Colors.basicText)
                     }
                   }
                 }
@@ -122,16 +124,17 @@ struct ProfileView: View {
                   }
                 }
               }
-              Cell(title: "Use FaceID") {
+              Cell(title: "Notifacations") {
                 Toggle("", isOn: $showNotifications)
                   .padding(.trailing, 15)
+                  .tint(Colors.toggleColor)
               }
               NavigationLink(destination: AddMemberView()) {
                 AddMemberCell()
               }
             }
           }
-          .background(.white)
+          .background(Colors.listBackground)
           .frame(width: UIScreen.main.bounds.width - 40)
           .cornerRadius(15)
           Spacer()
@@ -219,11 +222,11 @@ struct AddMemberCell: View {
         Image(systemName: "person.badge.plus")
           .resizable()
           .frame(width: 26, height: 22)
-          .foregroundColor(Colors.purpleButton)
+          .foregroundColor(Colors.addMember)
           .padding(.leading, 15)
         Text("Add a family member")
           .font(.system(size: 15, weight: .semibold))
-          .foregroundColor(Colors.purpleButton)
+          .foregroundColor(Colors.addMember)
         Spacer()
       }
       .frame(height: 60)

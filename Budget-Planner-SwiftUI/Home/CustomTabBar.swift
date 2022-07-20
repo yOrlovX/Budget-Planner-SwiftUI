@@ -84,10 +84,11 @@ struct TabBarButton: View {
     VStack {
       Image(image)
         .renderingMode(image == "plusButton" ? nil : .template)
-        .foregroundColor(tabData.currentTab == image ? .purple : .gray)
+        .foregroundColor(tabData.currentTab == image ? Colors.purpleButton : .gray)
       
       Text(title)
         .font(.system(size: 10, weight: .bold))
+        .foregroundColor(tabData.currentTab == image ? Colors.purpleButton : .gray)
     }
     .foregroundColor(tabData.currentTab == title ? .purple : .gray)
     .frame(maxWidth: .infinity)

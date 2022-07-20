@@ -50,6 +50,7 @@ struct HomeView: View {
                   }
                   .padding(.trailing, -30)
                 }
+                .listRowBackground(Colors.listBackground)
               } else {
                 EmptyView()
               }

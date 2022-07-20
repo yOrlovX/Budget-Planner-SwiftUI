@@ -25,7 +25,7 @@ struct UserProfileTitleModifier : ViewModifier {
       .font(.system(size: 15, weight: .medium))
       .padding(.leading, 15)
       .padding(.vertical, 20)
-      .foregroundColor(.black)
+      .foregroundColor(Colors.basicText)
   }
 }
 

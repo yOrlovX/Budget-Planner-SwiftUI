@@ -23,4 +23,6 @@ struct Colors {
   static var mailCircleBackground = Color("mailCircleBackground")
   static var middleCircleBackground = Color("middleCircleBackground")
   static var circleText = Color("circleText")
+  static var toggleColor = Color("toggleColor")
+  static var addMember = Color("addMember")
 }
