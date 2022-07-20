@@ -37,12 +37,12 @@ struct AccountView: View {
               faceIdCell
               setPinCell
             }
-            .overlay(
-              RoundedRectangle(cornerRadius: 25)
-                .stroke(Color.white, lineWidth: 1)
-            )
-            .background(.white)
-            .cornerRadius(25)
+//            .overlay(
+//              RoundedRectangle(cornerRadius: 25)
+//                .stroke(Color.white, lineWidth: 1)
+//            )
+            .background(Colors.listBackground)
+            .cornerRadius(10)
             .padding()
             createAccountButton
               .padding(.top, 70)
@@ -65,6 +65,7 @@ extension AccountView {
         .frame(width: 115, height: 115)
       Text("Get Started")
         .font(.system(size: 20, weight: .bold))
+        .foregroundColor(Colors.basicText)
       Text("It only takes a minute to start taking hold \nof your finances")
         .font(.system(size: 15, weight: .regular))
         .multilineTextAlignment(.center)
@@ -78,6 +79,7 @@ extension AccountView {
         Text("Name:")
           .font(.system(size: 15, weight: .medium))
           .padding(.leading, 15)
+          .foregroundColor(Colors.basicText)
         Spacer()
         TextField("None", text: $name)
           .multilineTextAlignment(TextAlignment.trailing)
@@ -88,8 +90,10 @@ extension AccountView {
       }
       .frame(height: cellHeight)
       Divider()
+        .foregroundColor(.red)
         .frame(width: UIScreen.main.bounds.width - 70)
     }
+    .background(Colors.listBackground)
   }
   
   private var mailCell: some View {
@@ -98,6 +102,7 @@ extension AccountView {
         Text("Email:")
           .font(.system(size: 15, weight: .medium))
           .padding(.leading, 15)
+          .foregroundColor(Colors.basicText)
         Spacer()
         TextField("None", text: $email)
           .multilineTextAlignment(TextAlignment.trailing)
@@ -110,6 +115,7 @@ extension AccountView {
       Divider()
         .frame(width: UIScreen.main.bounds.width - 70)
     }
+    .background(Colors.listBackground)
   }
   
   private var currencyCell: some View {
@@ -118,6 +124,7 @@ extension AccountView {
         Text("Currency")
           .font(.system(size: 15, weight: .medium))
           .padding(.leading, 15)
+          .foregroundColor(Colors.basicText)
         Spacer()
         HStack {
           Picker("", selection: $selectedCurrency) {
@@ -135,6 +142,7 @@ extension AccountView {
       Divider()
         .frame(width: UIScreen.main.bounds.width - 70)
     }
+    .background(Colors.listBackground)
   }
   
   private var dailyLimitCell: some View {
@@ -143,6 +151,7 @@ extension AccountView {
         Text("Daily limit")
           .font(.system(size: 15, weight: .medium))
           .padding(.leading, 15)
+          .foregroundColor(Colors.basicText)
         Spacer()
         HStack {
           Picker("", selection: $selectedLimit) {
@@ -160,6 +169,7 @@ extension AccountView {
       Divider()
         .frame(width: UIScreen.main.bounds.width - 70)
     }
+    .background(Colors.listBackground)
   }
   
   private var faceIdCell: some View {
@@ -168,6 +178,7 @@ extension AccountView {
         Text("Use FaceID")
           .font(.system(size: 15, weight: .medium))
           .padding(.leading, 15)
+          .foregroundColor(Colors.basicText)
         Spacer()
         Toggle("", isOn: $showFaceId)
           .padding(.trailing, 15)
@@ -176,6 +187,7 @@ extension AccountView {
       Divider()
         .frame(width: UIScreen.main.bounds.width - 70)
     }
+    .background(Colors.listBackground)
   }
   
   private var setPinCell: some View {
@@ -184,6 +196,7 @@ extension AccountView {
         Text("Set your pin")
           .font(.system(size: 15, weight: .medium))
           .padding(.leading, 15)
+          .foregroundColor(Colors.basicText)
         Spacer()
         Group {
           if isSecured {
@@ -209,9 +222,10 @@ extension AccountView {
         }
       }
       .frame(height: cellHeight)
-      Divider()
-        .frame(width: UIScreen.main.bounds.width - 70)
+//      Divider()
+//        .frame(width: UIScreen.main.bounds.width - 70)
     }
+    .background(Colors.listBackground)
   }
   
   private var createAccountButton: some View {

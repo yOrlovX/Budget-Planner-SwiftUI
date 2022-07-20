@@ -78,7 +78,7 @@ extension OnboardingView {
   private var grayButton: some View {
     Text("Skip")
       .font(.system(size: 15, weight: .regular))
-      .foregroundColor(onboardingState == 3 ? .clear : Colors.grayButton)
+      .foregroundColor(onboardingState == 3 ? .clear : Colors.skipButton)
       .opacity(onboardingState == 4 ? 0 : 1)
       .padding()
   }
@@ -123,7 +123,7 @@ extension OnboardingView {
     VStack(spacing: 10) {
       Text("Take hold of your finances")
         .font(.system(size: 20, weight: .bold))
-        .foregroundColor(.black)
+        .foregroundColor(Colors.basicText)
         .padding(.bottom, 11)
       Text("Managing your finances can be effortless")
         .font(.system(size: 15, weight: .regular))
@@ -139,7 +139,7 @@ extension OnboardingView {
     VStack(spacing: 0) {
       Text("See where your money goes")
         .font(.system(size: 20, weight: .bold))
-        .foregroundColor(.black)
+        .foregroundColor(Colors.basicText)
         .padding(.bottom, 11)
       Text("This app helps your to track your income and expenditure via automatic bank synchronization or manually")
         .font(.system(size: 15, weight: .regular))
@@ -156,7 +156,7 @@ extension OnboardingView {
     VStack(spacing: 0) {
       Text("Reach your goals with ease")
         .font(.system(size: 20, weight: .bold))
-        .foregroundColor(.black)
+        .foregroundColor(Colors.basicText)
         .padding(.bottom, 11)
       Text("Managing your finances can be effortless Budget App makes it a breeze")
         .font(.system(size: 15, weight: .regular))

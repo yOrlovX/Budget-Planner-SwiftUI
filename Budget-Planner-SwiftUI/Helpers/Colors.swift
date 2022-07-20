@@ -17,4 +17,7 @@ struct Colors {
   static var lightGreen = Color("lightGreen")
   static var greenCircle = Color("greenCircle")
   static var imageBackground = Color("imageBackground")
+  static var basicText = Color("basicText")
+  static var skipButton = Color("skipButton")
+  static var listBackground = Color("listBackground")
 }

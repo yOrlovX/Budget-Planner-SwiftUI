@@ -28,7 +28,7 @@ struct PinCodeButtonsGrid: View {
         Spacer()
         Text("Enter Passcode")
           .font(.system(size: 20, weight: .bold))
-          .foregroundColor(.black)
+          .foregroundColor(Colors.basicText)
         Text("New PIN")
           .font(.system(size: 15, weight: .regular))
           .foregroundColor(Colors.grayText)
@@ -50,7 +50,7 @@ struct PinCodeButtonsGrid: View {
                 .font(.system(size: 23, weight: .bold))
                 .foregroundColor(selectedItem == item  ? .white : Colors.purpleButton)
                 .frame(width: 71, height: 71)
-                .background((selectedItem == item) ? Colors.purpleButton : .white )
+                .background((selectedItem == item) ? Colors.purpleButton : Colors.listBackground )
                 .cornerRadius(20)
             }
           }

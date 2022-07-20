@@ -14,7 +14,7 @@ struct Budget_Planner_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
           IntroView()
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
         }
     }
 }
