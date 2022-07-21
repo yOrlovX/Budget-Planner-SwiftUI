@@ -21,9 +21,8 @@ struct ConnectionView: View {
             .padding(.top, 20)
           textFields
             .padding(.top, 20)
-          securityLabel
-            .padding(.top, 60)
           Spacer()
+          securityLabel
           purpleButton
         }
       }
@@ -90,14 +89,14 @@ extension ConnectionView {
     VStack(spacing: 13) {
       TextField("Login", text: $loginText)
         .padding(.leading, 16)
-        .frame(height: 70)
+        .frame(height: AdaptiveTextField.adaptiveHeight)
         .frame(maxWidth: .infinity)
         .background(Colors.listBackground)
         .cornerRadius(20)
         .padding(.horizontal, 20)
       TextField("Password", text: $passwordText)
         .padding(.leading, 16)
-        .frame(height: 70)
+        .frame(height: AdaptiveTextField.adaptiveHeight)
         .frame(maxWidth: .infinity)
         .background(Colors.listBackground)
         .cornerRadius(20)
@@ -111,11 +110,12 @@ extension ConnectionView {
         .resizable()
         .scaledToFit()
         .frame(width: 32, height: 32)
-      Text("Connection date is not available to Zenmoney employees. Date is encrypted and stored on the phone. Zenmoney cannot transfer money from your account.")
+      Text("Connection date is not available to bank employees. Date is encrypted and stored on the phone.")
         .font(.system(size: 15, weight: .regular))
+        .minimumScaleFactor(0.7)
         .foregroundColor(Colors.grayText)
         .multilineTextAlignment(.center)
-        .padding(.horizontal, 60)
+        .padding(20)
     }
   }
   
@@ -128,7 +128,6 @@ extension ConnectionView {
       .foregroundColor(.white)
       .padding(.horizontal, 20)
       .padding(.bottom, 30)
-      .padding(.top, 20)
   }
 }
 

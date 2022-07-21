@@ -177,6 +177,7 @@ extension AccountView {
         Spacer()
         Toggle("", isOn: $showFaceId)
           .padding(.trailing, 15)
+          .tint(Colors.toggleColor)
       }
       .frame(height: cellHeight)
       Divider()
