@@ -30,4 +30,5 @@ struct Colors {
   static var cardProgress = Color("cardProgress")
   static var cardProgressCirle = Color("cardProgressCirle")
   static var cardCircleText = Color("cardCircleText")
+  static var statisticSegmentText = Color("statisticSegmentText")
 }

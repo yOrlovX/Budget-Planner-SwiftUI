@@ -36,13 +36,14 @@ struct SpendingBreakdownCell: View {
             .foregroundColor(Colors.grayText)
             Text(operationPrice)
               .font(.system(size: 15, weight: .semibold))
+              .foregroundColor(Colors.basicText)
             
           }
           .padding(.top, -10)
           .padding(.bottom, 15)
         }
+        .background(Colors.listBackground)
         .frame(height: 145)
-        .background(.white)
         .cornerRadius(20)
     }
 }

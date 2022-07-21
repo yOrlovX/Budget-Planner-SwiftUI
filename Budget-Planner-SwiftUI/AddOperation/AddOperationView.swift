@@ -25,18 +25,24 @@ struct AddOperationView: View {
         .ignoresSafeArea()
       ScrollView {
         VStack {
-          Image("addOperation")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 120, height: 115)
+          ZStack {
+            Image("addOperation")
+              .resizable()
+              .scaledToFit()
+              .padding(25)
+          }
+          .frame(width: 120, height: 120)
+          .background(Colors.listBackground)
+          .cornerRadius(25)
           Text("Add operation")
             .font(.system(size: 20, weight: .bold))
+            .foregroundColor(Colors.basicText)
           TextField("$ 0,00", text: $operationSum)
             .font(.system(size: 21, weight: .semibold))
             .multilineTextAlignment(.center)
             .frame(height: 67)
             .frame(maxWidth: .infinity)
-            .background(.white)
+            .background(Colors.listBackground)
             .cornerRadius(20)
             .padding(.horizontal, 20)
             .onChange(of: operationSum) { newValue in
@@ -49,14 +55,16 @@ struct AddOperationView: View {
                     if selectedCategory != category {
                       Image(category.lowercased())
                       Text(category)
+                      
                     } else {
                       Text(category)
                     }
                   }
                 }
               }
-              .foregroundColor(.black)
+              .foregroundColor(Colors.basicText)
               .font(.system(size: 15, weight: .medium))
+              .listRowBackground(Colors.listBackground)
               Picker("Currency", selection: $selectedCurrency) {
                 ForEach(currencies, id: \.self) { currency in
                   HStack {
@@ -69,12 +77,13 @@ struct AddOperationView: View {
                   }
                 }
               }
-              .foregroundColor(.black)
+              .foregroundColor(Colors.basicText)
               .font(.system(size: 15, weight: .medium))
-              
+              .listRowBackground(Colors.listBackground)
                 DatePicker("Date", selection: $selectedDate,displayedComponents: .date)
-                .foregroundColor(.black)
+                .foregroundColor(Colors.basicText)
                 .font(.system(size: 15, weight: .medium))
+                .listRowBackground(Colors.listBackground)
           }
           .listStyle(.insetGrouped)
           .frame(height: 208)
@@ -83,7 +92,7 @@ struct AddOperationView: View {
             .padding(.leading, 15)
             .frame(height: 112, alignment: .topLeading)
             .frame(maxWidth: .infinity)
-            .background(.white)
+            .background(Colors.listBackground)
             .cornerRadius(20)
             .padding(.horizontal, 20)
             .onChange(of: descriptionText) { newValue in

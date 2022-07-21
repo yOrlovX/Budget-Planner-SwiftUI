@@ -21,7 +21,8 @@ struct TipsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
             .padding(.top, 20)
-          .font(.system(size: 34, weight: .bold))
+            .font(.system(size: 34, weight: .bold))
+            .foregroundColor(Colors.basicText)
           SearchBar(searchText: $searchText, searching: $searching)
           ScrollView {
             LazyVGrid(columns: columns, spacing: 17) {
@@ -30,6 +31,8 @@ struct TipsView: View {
                   Image(image.image)
                     .resizable()
                     .scaledToFit()
+                    .background(Colors.listBackground)
+                    .cornerRadius(20)
                 }
               }
             }

@@ -26,19 +26,22 @@ struct BaseView: View {
               .font(.system(size: 34, weight: .bold))
               .frame(maxWidth: .infinity, alignment: .leading)
               .padding(.leading, 20)
+              .foregroundColor(Colors.basicText)
             Text("Expenses calendar")
               .font(.system(size: 20, weight: .bold))
               .frame(maxWidth: .infinity, alignment: .leading)
               .padding(.leading, 20)
               .padding(.top, 20)
+              .foregroundColor(Colors.basicText)
             VStack {
               Text("\(currentDateText.formatted(date: .abbreviated, time: .omitted) + " - " + futureDateText.formatted(date: .abbreviated, time: .omitted))")
                 .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Colors.basicText)
             }
             .padding(.leading, 18)
             .frame(maxWidth: .infinity, alignment: .leading)
             .frame(height: 60)
-            .background(.white)
+            .background(Colors.listBackground)
             .cornerRadius(20)
             .overlay(alignment: .trailing) {
               Button(action: { showDatePicker.toggle() }) {
@@ -55,9 +58,10 @@ struct BaseView: View {
               GraphView()
                 .padding(.bottom, 24)
             }
-            .background(.white)
+            .background(Colors.listBackground)
             .cornerRadius(20)
             .padding(.horizontal, 20)
+            
             SpendingBreakdownView()
               .padding(.top, 30)
           }
@@ -77,7 +81,7 @@ struct BaseView: View {
               .datePickerStyle(.graphical)
               .labelsHidden()
               .padding()
-              .background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+              .background(Colors.listBackground, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
               .padding()
           }
         }
@@ -91,7 +95,7 @@ struct BaseView: View {
       ForEach(tabs, id: \.self) { tab in
         Text(tab)
           .font(.system(size: 13, weight: .semibold))
-          .foregroundColor(currentTab == tab ? .white : .black)
+          .foregroundColor(currentTab == tab ? .white : Colors.statisticSegmentText)
           .frame(height: 38)
           .frame(maxWidth: .infinity )
           .background {
@@ -109,6 +113,7 @@ struct BaseView: View {
       }
     }
     .padding(.horizontal, 18)
+    .background(Colors.listBackground)
   }
   
   @ViewBuilder
@@ -150,6 +155,7 @@ struct BaseView: View {
       }
       .padding(.horizontal, 20)
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+      .background(Colors.listBackground)
     }
     .frame(height: 190)
   }

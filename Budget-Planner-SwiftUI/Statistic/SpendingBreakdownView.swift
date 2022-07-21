@@ -16,6 +16,7 @@ struct SpendingBreakdownView: View {
           .font(.system(size: 20, weight: .bold))
           .frame(maxWidth: .infinity, alignment: .leading)
           .padding(.bottom, 17)
+          .foregroundColor(Colors.basicText)
         LazyVGrid(columns: columns, spacing: 10) {
           ForEach(operationsData, id: \.self) { operation in
             SpendingBreakdownCell(operationImage: operation.image, operationName: operation.name, operationPrice: operation.price, operationProgress: operation.progress)
