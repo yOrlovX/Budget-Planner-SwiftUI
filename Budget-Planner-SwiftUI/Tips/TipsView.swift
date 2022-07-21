@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct TipsView: View {
-  @State var searchText: String = ""
-  @State var searching = false
+  @State private var searchText: String = ""
+  @State private var searching = false
   var tipsImages: [TipsModel] = TipsData.data
   let columns = Array(repeating: GridItem(.adaptive(minimum: .infinity), spacing: 10), count: 2)
-    var body: some View {
+    
+  var body: some View {
       ZStack {
         Colors.background
           .ignoresSafeArea()

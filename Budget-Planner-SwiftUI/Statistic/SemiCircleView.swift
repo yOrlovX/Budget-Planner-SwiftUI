@@ -12,7 +12,6 @@ struct SemiCircleView: View {
       var style = StrokeStyle()
       style.lineCap = .round
               style.lineWidth = 20
-
               return Semicircle()
                   .stroke(Color.pink, style: style)
     }
@@ -25,7 +24,6 @@ struct Semicircle: Shape {
       let startAngle = Angle.degrees(50)
         let endAngle = Angle(degrees: 125)
         let clockwise = true
-
         return Path { p in
             p.addArc(center: center,
                      radius: radius,

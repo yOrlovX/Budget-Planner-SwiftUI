@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct BaseView: View {
-  @State var currentTab: String = "Spent"
+  @State private var currentTab: String = "Spent"
   @Namespace var animation
-  @State var showEarned: Bool = false
+  @State private var showEarned: Bool = false
   @State private var calendarText: String = ""
   @State private var currentDateText: Date = Date()
   @State private var futureDateText: Date = Date()

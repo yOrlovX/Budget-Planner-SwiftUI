@@ -22,7 +22,6 @@ struct StatisticView: View {
             }
             .background(.yellow)
             .frame(height: 134)
-          
           ForEach(dayArray, id: \.self) { day in
             VStack {
               Rectangle()

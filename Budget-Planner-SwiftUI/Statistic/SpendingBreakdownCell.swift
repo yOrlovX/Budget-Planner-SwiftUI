@@ -37,7 +37,6 @@ struct SpendingBreakdownCell: View {
             Text(operationPrice)
               .font(.system(size: 15, weight: .semibold))
               .foregroundColor(Colors.basicText)
-            
           }
           .padding(.top, -10)
           .padding(.bottom, 15)

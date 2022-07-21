@@ -124,7 +124,7 @@ struct ProfileView: View {
                   }
                 }
               }
-              Cell(title: "Notifacations") {
+              Cell(title: "Notifications") {
                 Toggle("", isOn: $showNotifications)
                   .padding(.trailing, 15)
                   .tint(Colors.toggleColor)

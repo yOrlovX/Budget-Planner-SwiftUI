@@ -9,11 +9,11 @@ import SwiftUI
 
 struct OnboardingView: View {
   @StateObject var viewModel = UserViewModel()
-  @State var onboardingState: Int = 0
+  @State private var onboardingState: Int = 0
   @State private var progressAmount = 0.0
   @State var isValidate : Bool = false
   @Binding var currentUserSignedIn : Bool
-  @State var isAccountCreated: Bool = false
+  @State private var isAccountCreated: Bool = false
 
   var body: some View {
     ZStack {

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ChooseCountryView: View {
-  @State var selectedRow: CountryModel?
-  @State var searchText: String = ""
-  @State var searching = false
+  @State private var selectedRow: CountryModel?
+  @State private var searchText: String = ""
+  @State private var searching = false
   var countriesList: [CountryModel] = CountryCell.countries
   
   var body: some View {
@@ -168,7 +168,6 @@ struct SearchBar : View {
     .padding(.horizontal, 20)
   }
 }
-
 
 struct CountryModel: Identifiable, Equatable, Hashable {
   let id = UUID()

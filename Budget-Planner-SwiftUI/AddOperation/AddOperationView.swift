@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AddOperationView: View {
   @ObservedObject var operationViewModel = OperationViewModel()
-  @State var operationSum: String = ""
-  @State var descriptionText: String = ""
+  @State private var operationSum: String = ""
+  @State private var descriptionText: String = ""
   @State private var selectedCurrency = ""
   @State private var selectedCategory = ""
   @State private var selectedDate = Date()
-  @State var showsDatePicker = false
-  @State var isValidate: Bool = false
+  @State private var showsDatePicker = false
+  @State private var isValidate: Bool = false
   let categories = ["Shopping","Travel","Food","Medicine","Cash","Sport","Education","Accommodation","Other"]
   let currencies = ["$ Dollar","£ Pound","€ Euro","¥ Yen"]
   

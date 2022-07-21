@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AccountView: View {
   @StateObject var viewModel = UserViewModel()
-  @State var name: String = ""
-  @State var email: String = ""
+  @State private var name: String = ""
+  @State private var email: String = ""
   @State private var selectedCurrency = "USD"
   @State private var selectedLimit = 1000
   @State private var showFaceId = true
   @Binding var isValidate: Bool
-  @State var pin: String = ""
+  @State private var pin: String = ""
   @State private var isSecured: Bool = true
   @State var showPinPool: Bool = false
   @Binding var isAccountCreated: Bool
@@ -37,10 +37,6 @@ struct AccountView: View {
               faceIdCell
               setPinCell
             }
-//            .overlay(
-//              RoundedRectangle(cornerRadius: 25)
-//                .stroke(Color.white, lineWidth: 1)
-//            )
             .background(Colors.listBackground)
             .cornerRadius(10)
             .padding()
@@ -56,7 +52,6 @@ struct AccountView: View {
 }
 
 extension AccountView {
-  
   private var logoWithText: some View {
     VStack(spacing: 0) {
       Image("logo")
@@ -222,8 +217,6 @@ extension AccountView {
         }
       }
       .frame(height: cellHeight)
-//      Divider()
-//        .frame(width: UIScreen.main.bounds.width - 70)
     }
     .background(Colors.listBackground)
   }

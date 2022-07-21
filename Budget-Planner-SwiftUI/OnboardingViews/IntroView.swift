@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IntroView: View {
   @ObservedObject var viewModel = UserViewModel()
-  @State var currentUserSignedIn: Bool = false
+  @State private var currentUserSignedIn: Bool = false
   
     var body: some View {
       ZStack {

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ConnectionView: View {
-  @State var loginText: String = ""
-  @State var passwordText: String = ""
+  @State private var loginText: String = ""
+  @State private var passwordText: String = ""
     
   var body: some View {
       ZStack {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChooseBankView: View {
-  @State var selectedRow: BankModel?
+  @State private var selectedRow: BankModel?
     
   var body: some View {
       ZStack {
