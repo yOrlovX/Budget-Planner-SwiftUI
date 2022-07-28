@@ -11,9 +11,9 @@ import CoreData
 class CoreDataManager {
   static let instance = CoreDataManager()
   let container: NSPersistentContainer
-  let context: NSManagedObjectContext
+  var context: NSManagedObjectContext { container.viewContext }
   
-  init() {
+  private init() {
     container = NSPersistentContainer(name: "CoreDataContainer")
     let description = NSPersistentStoreDescription()
     description.shouldMigrateStoreAutomatically = true
@@ -24,6 +24,5 @@ class CoreDataManager {
         print("Error loading Core Data \(error)")
       }
     }
-    context = container.viewContext
   }
 }

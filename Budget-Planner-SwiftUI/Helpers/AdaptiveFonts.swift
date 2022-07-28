@@ -10,7 +10,7 @@ import UIKit
 
 struct AdaptiveFonts {
   static var screen = UIScreen.main.bounds.height
-  static var totalSumFont: CGFloat = screen < 896 ? 20 : 40
+  static var totalSumFont: CGFloat = screen < 896 ? 24 : 40
   static var spentTodayFont: CGFloat = screen < 896 ? 14 : 16
   static var balanceTodayFont: CGFloat = screen < 896 ? 14 : 16
   static var userLimitFont: CGFloat = screen < 896 ? 16 : 23
