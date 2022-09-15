@@ -16,8 +16,7 @@ struct AddOperationView: View {
   @State private var selectedDate = Date()
   @State private var showsDatePicker = false
   @State private var isValidate: Bool = false
-  let categories = ["Shopping","Travel","Food","Medicine","Cash","Sport","Education","Accommodation","Other"]
-  let currencies = ["$ Dollar","£ Pound","€ Euro","¥ Yen"]
+  var cellHorizontalPadding: CGFloat = UIScreen.main.bounds.width - 70
   
   var body: some View {
     ZStack {
@@ -48,45 +47,41 @@ struct AddOperationView: View {
             .onChange(of: operationSum) { newValue in
               isDataValidate()
             }
-          List {
-              Picker("Category", selection: $selectedCategory) {
-                ForEach(categories, id: \.self) { category in
-                  HStack {
-                    if selectedCategory != category {
-                      Image(category.lowercased())
-                      Text(category)
-                      
-                    } else {
-                      Text(category)
-                    }
-                  }
+          VStack(spacing: 0) {
+            NavigationLink(destination: CategoryView(selectedCategory: $selectedCategory)) {
+              OperationCell(title: "Category") {
+                if selectedCategory.isEmpty {
+                  Image(systemName: "chevron.right")
+                } else {
+                  Text(selectedCategory)
                 }
               }
-              .foregroundColor(Colors.basicText)
-              .font(.system(size: 15, weight: .medium))
-              .listRowBackground(Colors.listBackground)
-              Picker("Currency", selection: $selectedCurrency) {
-                ForEach(currencies, id: \.self) { currency in
-                  HStack {
-                    if selectedCurrency != currency {
-                      Image(currency.lowercased())
-                      Text(currency)
-                    } else {
-                      Text(currency)
-                    }
-                  }
+            }
+            Divider()
+              .frame(width: cellHorizontalPadding)
+            NavigationLink(destination: CurrencyView(selectedCurrency: $selectedCurrency)) {
+              OperationCell(title: "Currency") {
+                if selectedCurrency.isEmpty {
+                  Image(systemName: "chevron.right")
+                } else {
+                  Text(selectedCurrency)
                 }
               }
-              .foregroundColor(Colors.basicText)
-              .font(.system(size: 15, weight: .medium))
-              .listRowBackground(Colors.listBackground)
-                DatePicker("Date", selection: $selectedDate,displayedComponents: .date)
-                .foregroundColor(Colors.basicText)
-                .font(.system(size: 15, weight: .medium))
-                .listRowBackground(Colors.listBackground)
+            }
+            Divider()
+              .frame(width: cellHorizontalPadding)
+            NavigationLink(destination: DateOperationView(selectedDate: $selectedDate)) {
+              OperationCell(title: "Date") {
+                HStack {
+                  Text(dateFormatter.string(from: selectedDate))
+                  Image(systemName: "chevron.right")
+                }
+              }
+            }
           }
-          .listStyle(.insetGrouped)
-          .frame(height: 208)
+          .background(Colors.listBackground)
+          .cornerRadius(20)
+          .padding(.horizontal, 20)
           TextField("Note", text: $descriptionText)
             .padding(.top, 15)
             .padding(.leading, 15)
@@ -129,6 +124,12 @@ struct AddOperationView: View {
     } else {
       isValidate = false
     }
+  }
+  
+  var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEE d MMM"
+    return formatter
   }
 }
 

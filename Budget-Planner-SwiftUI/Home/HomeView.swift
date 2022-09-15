@@ -77,7 +77,7 @@ struct ActionsRow: View {
   let name : String
   let image: String
   let description: String
-  let price: Int16
+  var price: Int16
   var currency: String
   let date: Date
   

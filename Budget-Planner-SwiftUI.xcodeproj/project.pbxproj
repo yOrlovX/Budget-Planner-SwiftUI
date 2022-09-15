@@ -12,6 +12,10 @@
 		92000414284F4FEC00A7D03C /* SpendingBreakdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92000413284F4FEC00A7D03C /* SpendingBreakdownCell.swift */; };
 		92000416284F528A00A7D03C /* SemiCircleProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92000415284F528A00A7D03C /* SemiCircleProgressViewStyle.swift */; };
 		92000418284F806F00A7D03C /* SpendingBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92000417284F806F00A7D03C /* SpendingBreakdownView.swift */; };
+		92028CBA28940185005776B5 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92028CB928940185005776B5 /* CategoryView.swift */; };
+		923A106628982D6500689C14 /* DateOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923A106528982D6500689C14 /* DateOperationView.swift */; };
+		924BF8232896F7A6000259AB /* OperationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924BF8222896F7A6000259AB /* OperationCell.swift */; };
+		924BF8252896FE96000259AB /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924BF8242896FE96000259AB /* CurrencyView.swift */; };
 		92596A70283CD5E9009C2D5E /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92596A6F283CD5E9009C2D5E /* IntroView.swift */; };
 		92596A73283CD64A009C2D5E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92596A72283CD64A009C2D5E /* Colors.swift */; };
 		92596A75283CD9E2009C2D5E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92596A74283CD9E2009C2D5E /* OnboardingView.swift */; };
@@ -55,6 +59,10 @@
 		92000413284F4FEC00A7D03C /* SpendingBreakdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingBreakdownCell.swift; sourceTree = "<group>"; };
 		92000415284F528A00A7D03C /* SemiCircleProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemiCircleProgressViewStyle.swift; sourceTree = "<group>"; };
 		92000417284F806F00A7D03C /* SpendingBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingBreakdownView.swift; sourceTree = "<group>"; };
+		92028CB928940185005776B5 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		923A106528982D6500689C14 /* DateOperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOperationView.swift; sourceTree = "<group>"; };
+		924BF8222896F7A6000259AB /* OperationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCell.swift; sourceTree = "<group>"; };
+		924BF8242896FE96000259AB /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		92596A6F283CD5E9009C2D5E /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		92596A72283CD64A009C2D5E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		92596A74283CD9E2009C2D5E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -254,7 +262,11 @@
 			isa = PBXGroup;
 			children = (
 				92CD965C28450AEB00883D1A /* AddOperationView.swift */,
+				923A106528982D6500689C14 /* DateOperationView.swift */,
 				92A58686285BA6BC00865B8B /* OperationViewModel.swift */,
+				92028CB928940185005776B5 /* CategoryView.swift */,
+				924BF8242896FE96000259AB /* CurrencyView.swift */,
+				924BF8222896F7A6000259AB /* OperationCell.swift */,
 			);
 			path = AddOperation;
 			sourceTree = "<group>";
@@ -334,15 +346,19 @@
 				92CD965F2845132F00883D1A /* AddCardView.swift in Sources */,
 				92C2C129287F17F600450B02 /* ViewModifiers.swift in Sources */,
 				92596A73283CD64A009C2D5E /* Colors.swift in Sources */,
+				92028CBA28940185005776B5 /* CategoryView.swift in Sources */,
 				927BE9D728367B6C00E2360A /* Budget_Planner_SwiftUIApp.swift in Sources */,
 				92CD96492840077F00883D1A /* HomeView.swift in Sources */,
 				92C2C12D288737CD00450B02 /* AdaptiveFonts.swift in Sources */,
 				92596A79283CE735009C2D5E /* MyProgressViewStyle.swift in Sources */,
+				923A106628982D6500689C14 /* DateOperationView.swift in Sources */,
 				92CD96462840023300883D1A /* CornerRadiusStyle.swift in Sources */,
 				92CD965A2844F4FC00883D1A /* ActionsView.swift in Sources */,
 				92C2C1312889CAD100450B02 /* AdaptiveTextField.swift in Sources */,
 				92CD963A283E5EC300883D1A /* PinCodeButtonsGrid.swift in Sources */,
 				92000414284F4FEC00A7D03C /* SpendingBreakdownCell.swift in Sources */,
+				924BF8232896F7A6000259AB /* OperationCell.swift in Sources */,
+				924BF8252896FE96000259AB /* CurrencyView.swift in Sources */,
 				92CD96672847304800883D1A /* ChooseBankView.swift in Sources */,
 				92CD964D28425BE400883D1A /* GaugeProgressStyle.swift in Sources */,
 				92596A7C283D3044009C2D5E /* AccountView.swift in Sources */,
