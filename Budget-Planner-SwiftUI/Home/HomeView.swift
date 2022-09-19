@@ -140,7 +140,7 @@ extension HomeView {
             .shadow(color: Colors.purpleButton, radius: 10, x: 0, y: 0)
             .overlay {
               ZStack {
-                ProgressView(value: progress + getProgressAmount() , total: 1)
+                ProgressView(value: progress + getProgressAmount() , total: updateProgressViewWhenUserLimitWasChanged())
                   .progressViewStyle(GaugeProgressStyle())
                   .frame(width: mainCircleWidth - 95)
                   .overlay {
@@ -152,7 +152,7 @@ extension HomeView {
                       .frame(width: 10, height: 10)
                       .foregroundColor(.white)
                       .offset(y: -(mainCircleWidth - 95) / 2 )
-                      .rotationEffect(.degrees(Double(self.getProgressAmount()) * 360))
+                      .rotationEffect(.degrees(Double(self.getProgressAmount()) * 360 / updateProgressViewWhenUserLimitWasChanged()))
                   }
                 VStack {
                     Text("\(operationViewModel.totalSumOfOperations())")
@@ -182,6 +182,15 @@ extension HomeView {
   
   func getProgressAmount () -> Double {
     Double(operationViewModel.totalSumOfOperations()) / 1000
+  }
+  
+  func updateProgressViewWhenUserLimitWasChanged() -> Double {
+    var newLimit : Int16 = 0
+    for user in userViewModel.savedEntities {
+      newLimit = user.limit
+    }
+    let progressLimit = (newLimit / 100) / 10
+    return Double(progressLimit)
   }
 }
 

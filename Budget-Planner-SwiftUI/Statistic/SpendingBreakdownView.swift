@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SpendingBreakdownView: View {
+  @ObservedObject var operationsViewModel = OperationViewModel()
   let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
   
     var body: some View {
@@ -18,8 +19,9 @@ struct SpendingBreakdownView: View {
           .padding(.bottom, 17)
           .foregroundColor(Colors.basicText)
         LazyVGrid(columns: columns, spacing: 10) {
-          ForEach(operationsData, id: \.self) { operation in
-            SpendingBreakdownCell(operationImage: operation.image, operationName: operation.name, operationPrice: operation.price, operationProgress: operation.progress)
+          ForEach(operationsViewModel.savedOperations, id: \.self) { operation in
+//            SpendingBreakdownCell(image: operation.image, operationName: operation.name, operationPrice: operation.price, operationProgress: operation.progress)
+            SpendingBreakdownCell(image: operation.category?.lowercased() ?? "", name: operation.category ?? "", sum: operation.sum, progress: (Double(operation.sum) / 100) / 10)
           }
         }
       }

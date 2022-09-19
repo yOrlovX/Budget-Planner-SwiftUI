@@ -78,5 +78,3 @@ struct PinCodeView_Previews: PreviewProvider {
     PinCodeButtonsGrid(pin: .constant(""))
   }
 }
-
-
