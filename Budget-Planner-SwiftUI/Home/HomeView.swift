@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-  @ObservedObject var operationViewModel = OperationViewModel()
-  @ObservedObject var userViewModel = UserViewModel()
+  @StateObject var operationViewModel = OperationViewModel()
+  @StateObject var userViewModel = UserViewModel()
   @State private var progress = 0.0
   @State private var angle: Double = -90
   private var mainCircleWidth: CGFloat = UIScreen.main.bounds.width - 80
@@ -21,6 +21,7 @@ struct HomeView: View {
         .ignoresSafeArea()
         VStack {
           circularProgressView
+            .padding(.top, 20)
             .onAppear {
               withAnimation {}
             }

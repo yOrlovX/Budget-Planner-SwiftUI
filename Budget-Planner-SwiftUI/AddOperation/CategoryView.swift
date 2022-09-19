@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CategoryView: View {
+  @ObservedObject var operationsViewModel = OperationViewModel()
   @State var currentTab: String = "Expenses"
   @Environment(\.presentationMode) var presentationMode
   @Binding var selectedCategory: String
-  let categories2 = ["Shopping","Travel","Food","Medicine","Cash","Sport","Education","Accommodation","Other"]
-  let incomes = ["Premium", "Salary", "Gift", "Sales", "Other"]
+  
                  
     var body: some View {
       ZStack {
@@ -22,7 +22,7 @@ struct CategoryView: View {
           CustomSegmentedBar()
           if currentTab == "Expenses" {
             List {
-              ForEach(categories2, id: \.self) { category in
+              ForEach(operationsViewModel.categories, id: \.self) { category in
                 HStack {
                   Image(category.lowercased())
                   Text(category)
@@ -44,7 +44,7 @@ struct CategoryView: View {
           }
           else {
             List {
-              ForEach(incomes, id: \.self) { income in
+              ForEach(operationsViewModel.incomes, id: \.self) { income in
                 HStack {
                   Image(income.lowercased())
                   Text(income)
@@ -66,7 +66,9 @@ struct CategoryView: View {
           }
           Spacer()
         }
+        .padding(.top, 30)
       }
+      .navigationBarTitle("Category")
     }
   
   @ViewBuilder
@@ -92,7 +94,7 @@ struct CategoryView: View {
       }
     }
     .padding(.horizontal, 18)
-    .background(Colors.listBackground)
+    .background(Colors.background)
   }
 }
 

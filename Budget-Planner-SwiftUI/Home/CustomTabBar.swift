@@ -57,7 +57,7 @@ struct CustomTabBar: View {
         ,alignment: .bottom
       )
     }
-    .navigationViewStyle(StackNavigationViewStyle())
+    .navigationViewStyle(.columns)
     .accentColor(Colors.purpleButton)
   }
 }

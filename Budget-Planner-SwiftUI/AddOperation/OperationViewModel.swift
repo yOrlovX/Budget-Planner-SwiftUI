@@ -10,6 +10,8 @@ import CoreData
 
 class OperationViewModel : ObservableObject {
   @Published var savedOperations: [OperationEntity] = []
+  @Published var categories = ["Shopping","Travel","Food","Medicine","Cash","Sport","Education","Accommodation","Other"]
+  @Published var incomes = ["Premium", "Salary", "Gift", "Sales", "Other"]
   let manager = CoreDataManager.instance
   
   init() {
