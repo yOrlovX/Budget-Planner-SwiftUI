@@ -99,7 +99,7 @@ struct AddOperationView: View {
               currency: selectedCurrency,
               date: selectedDate,
               note: descriptionText,
-              sum: Int16(operationSum) ?? 0)
+              sum: checkNegativeOperationSum())
           })
           {
             Text("Add")
@@ -124,6 +124,18 @@ struct AddOperationView: View {
     } else {
       isValidate = false
     }
+  }
+  
+  func checkNegativeOperationSum() -> Int16 {
+    var newSum: Int16 = 0
+    for category in operationViewModel.categories {
+      if selectedCategory == category {
+        newSum = Int16(operationSum) ?? 0
+      } else {
+        return Int16(operationSum) ?? 0
+      }
+    }
+    return -newSum
   }
   
   var dateFormatter: DateFormatter {

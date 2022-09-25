@@ -116,7 +116,7 @@ struct ActionsRow: View {
       Spacer()
       Text("\(currency.first?.description ?? "") \(price)")
         .font(.system(size: 15, weight: .semibold))
-        .foregroundColor(Colors.circleText)
+        .foregroundColor(price < 0 ? .red : .green)
     }
     .listRowBackground(Colors.listBackground)
   }
