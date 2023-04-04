@@ -26,7 +26,7 @@ struct PinCodeButtonsGrid: View {
         .ignoresSafeArea()
       VStack {
         Spacer()
-        Text("Enter Passcode")
+        Text("Enter PINCODE")
           .font(.system(size: 20, weight: .bold))
           .foregroundColor(Colors.basicText)
         Text("New PIN")
